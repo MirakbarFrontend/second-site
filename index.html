@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>8-9-10-Iyul | 20:00</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<div class="date">
+			<div class="container date__container">
+				<div class="date__wrapper">
+					<div class="date__top">
+						<div class="date__top-left">
+							<div class="date__top-left-dot"></div>
+							<h4 class="date__top-left-title">8-9-10-Iyul | 20:00</h4>
+						</div>
+						<p class="date__top-text">Davronbek Turdievdan ERKAKLAR uchun 3 kunlik onlayn masterklass</p>
+					</div>
+					<div class="date__inner">
+						<h2 class="date__inner-title">Qanday qilib kuchli intizomni shakllantirish mumkinligini o’rganing</h2>
+						<div class="date__inner-info">
+							<p class="date__inner-info-text">Minglab o'quvchilarimda natija bergan sirli usullarni o'rgataman</p>
+						</div>
+						<h4 class="date__inner-title4">Masterklassda:</h4>
+						<ul class="date__inner-list">
+							<li class="date__inner-item">
+								— Qanday qilib erkak kishi stress va qo’ruvlarini yengib, o’ziga <br />
+								bo'lgan ishonchni oshirishi mumkinligini
+							</li>
+							<li class="date__inner-item">
+								— Qanday qilib to’g’ri maqsad qo’yish va unga intizom bilan <br />
+								erishish qoidalarini
+							</li>
+							<li class="date__inner-item">
+								— Kambag’al fikrlashdan qutilib, ko’proq daromad qilish <br />
+								va moliyaviy bilimlarni o’rganasiz
+							</li>
+						</ul>
+						<div class="date__bottom">
+							<button class="date__bottom-btn" onclick="openModal()">>>> BEPUL QATNASHISH >>></button>
+							<div class="date__timer" id="timer">02:00</div>
+						</div>
+						<p class="date__inner-text">Bepul qatnashish uchun bosing</p>
+					</div>
+				</div>
+				<div class="date__img-wrapper"></div>
+				<img class="date__img person" src="img/date-img.png" alt="img" />
+			</div>
+		</div>
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span>
+				<h2 class="modal-title">
+					Davom etish uchun <br />
+					ma'lumotlaringizni kiriting
+				</h2>
+
+				<label for="name">Ismingiz</label>
+				<input class="input" type="text" id="name" name="ism" placeholder="Ismingizni kiriting" />
+				<small class="error-msg" id="nameError">Required field</small>
+
+				<label for="phone">Telefon raqamingiz</label>
+				<div class="phone-wrapper">
+					<input class="input" type="tel" id="phone" name="number" placeholder="+998 99-999-9999" />
+				</div>
+				<small class="error-msg" id="phoneError">Required field</small>
+
+				<div id="formAlert" class="form-alert">Please fill in all required fields</div>
+
+				<!-- DAVOM ETISH tugmasi -->
+				<a id="submitButton" class="submit-btn" onclick="validateForm()">DAVOM ETISH</a>
+
+				<!-- Yuklanmoqda tugmasi (dastlab yashirin) -->
+				<div id="loader" style="display: none; text-align: center; margin-top: 15px">
+					<button disabled class="submit-btn">⏳ Yuklanmoqda...</button>
+				</div>
+			</div>
+		</div>
+
+		<footer class="site-footer">
+			<div class="footer-content">
+				<h2>Davronbek Turdiev</h2>
+				<p class="phone">+998 78 113 90 90</p>
+				<p>
+					"SUPERMIYA PRODUCTION" MCHJ<br />
+					Bogʻishamol MFY, Amir Temur shoh ko‘chasi<br />
+					Hisob raqam: 20208000600572456001 Bank: Anorbank AJ INN: 310352855 MFY: 01183
+				</p>
+				<p class="disclaimer">
+					This site or product is not part of or endorsed by Facebook, Google, or any social<br />
+					media platform in any way. FACEBOOK is a trademark of META PLATFORMS, Inc.<br />
+					YOUTUBE and GOOGLE are trademarks of ALPHABET, Inc.
+				</p>
+				<p>Barcha huquqlar himoyalangan, 2025.</p>
+
+				<div class="made-on">
+					<span>Made on</span>
+					<img src="https://static.tildacdn.one/img/tildacopy.png" alt="Tilda" width="20" />
+					<span>Tilda</span>
+				</div>
+			</div>
+		</footer>
+		<!-- JS -->
+		<script src="js/main.js	"></script>
+		<script>
+			const input = document.querySelector('#phone');
+			window.intlTelInput(input, {
+				initialCountry: 'uz',
+				utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js',
+			});
+
+			const scriptURL =
+				'https://script.google.com/macros/s/AKfycbzRlBwTjJk8DcHvV1tbhXhlj1wTbo-wbYMtwxy-I91GjhU6Cwe1-HppwxyvkzkErOhu5g/exec';
+			const form = document.forms['submit-to-google-sheet'];
+			const loader = document.getElementById('loader');
+			const submitButton = document.getElementById('submitButton');
+
+			// Formani yuborish
+			form.addEventListener('submit', e => {
+				e.preventDefault();
+
+				// Tugmani yashirib, yuklanishni ko‘rsatamiz
+				submitButton.style.display = 'none';
+				loader.style.display = 'block';
+
+				fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+					.then(response => {
+						console.log('Success!', response);
+						// Xohlasangiz, boshqa sahifaga o'tkazish:
+						// window.location.href = "rahmat.html";
+					})
+					.catch(error => {
+						console.error('Error!', error.message);
+						alert("Xatolik yuz berdi. Qaytadan urinib ko'ring.");
+					})
+					.finally(() => {
+						loader.style.display = 'none';
+						submitButton.style.display = 'inline-block';
+						window.location.href = 'a.html';
+					});
+			});
+
+			// Formani validatsiya qilish va yuborish
+			function validateForm() {
+				const name = document.getElementById('name').value.trim();
+				const phone = document.getElementById('phone').value.trim();
+				const nameError = document.getElementById('nameError');
+				const phoneError = document.getElementById('phoneError');
+				const formAlert = document.getElementById('formAlert');
+
+				let isValid = true;
+
+				if (name === '') {
+					nameError.style.display = 'block';
+					isValid = false;
+				} else {
+					nameError.style.display = 'none';
+				}
+
+				if (phone === '') {
+					phoneError.style.display = 'block';
+					isValid = false;
+				} else {
+					phoneError.style.display = 'none';
+				}
+
+				if (!isValid) {
+					formAlert.style.display = 'block';
+					return;
+				} else {
+					formAlert.style.display = 'none';
+					form.requestSubmit(); // bu orqali form submit listener ishga tushadi
+				}
+			}
+
+			// Modalni yopish funksiyasi (agar kerak bo‘lsa)
+			function closeModal() {
+				document.getElementById('myModal').style.display = 'none';
+			}
+		</script>
+	</body>
+</html>
