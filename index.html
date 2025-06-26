@@ -38,14 +38,18 @@
 							</li>
 						</ul>
 						<div class="date__bottom">
-							<button class="date__bottom-btn" onclick="openModal()">>>> BEPUL QATNASHISH >>></button>
+							<button class="date__bottom-btn" onclick="openModal()">>>> BEPUL QATNASHISH <<<</button>
 							<div class="date__timer" id="timer">02:00</div>
 						</div>
 						<p class="date__inner-text">Bepul qatnashish uchun bosing</p>
 					</div>
 				</div>
-				<div class="date__img-wrapper"></div>
-				<img class="date__img person" src="img/date-img.png" alt="img" />
+
+				<div class="image-wrapper">
+					<div class="bg-red"></div>
+					<img class="date__img" src="img/date-img.png" alt="img" />
+					<img class="media-img" src="img/media-img.png" alt="" width="214" height="314" />
+				</div>
 			</div>
 		</div>
 		<div id="myModal" class="modal">
@@ -62,7 +66,7 @@
 
 				<label for="phone">Telefon raqamingiz</label>
 				<div class="phone-wrapper">
-					<input class="input" type="tel" id="phone" name="number" placeholder="+998 99-999-9999" />
+					<input class="input" type="tel" id="phone" name="number" placeholder="+998 99-999-9999" autocomplete="tel" />
 				</div>
 				<small class="error-msg" id="phoneError">Required field</small>
 
@@ -82,23 +86,16 @@
 			<div class="footer-content">
 				<h2>Davronbek Turdiev</h2>
 				<p class="phone">+998 78 113 90 90</p>
-				<p>
+				<p class="text">
 					"SUPERMIYA PRODUCTION" MCHJ<br />
 					Bogʻishamol MFY, Amir Temur shoh ko‘chasi<br />
 					Hisob raqam: 20208000600572456001 Bank: Anorbank AJ INN: 310352855 MFY: 01183
 				</p>
 				<p class="disclaimer">
-					This site or product is not part of or endorsed by Facebook, Google, or any social<br />
-					media platform in any way. FACEBOOK is a trademark of META PLATFORMS, Inc.<br />
-					YOUTUBE and GOOGLE are trademarks of ALPHABET, Inc.
+					This site or product is not part of or endorsed by Facebook, Google, or any social media platform in any way. FACEBOOK
+					is a trademark of META PLATFORMS, Inc. YOUTUBE and GOOGLE are trademarks of ALPHABET, Inc.
 				</p>
 				<p>Barcha huquqlar himoyalangan, 2025.</p>
-
-				<div class="made-on">
-					<span>Made on</span>
-					<img src="https://static.tildacdn.one/img/tildacopy.png" alt="Tilda" width="20" />
-					<span>Tilda</span>
-				</div>
 			</div>
 		</footer>
 		<!-- JS -->
