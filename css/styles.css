@@ -438,6 +438,9 @@ label {
 	}
 }
 @media screen and (max-width: 768px) {
+	.modal-content {
+		padding: 120px 20px;
+	}
 	.modal-title {
 		font-size: 22px;
 		margin-bottom: 10px;
